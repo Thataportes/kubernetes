@@ -1,0 +1,23 @@
+# permissions for end users to view kubernetes.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: kubernetes
+    app.kubernetes.io/managed-by: kustomize
+  name: kubernetes-viewer-role
+rules:
+- apiGroups:
+  - webapp.exemplo.com
+  resources:
+  - kubernetes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - webapp.exemplo.com
+  resources:
+  - kubernetes/status
+  verbs:
+  - get
